@@ -1,0 +1,43 @@
+/* ******************** */
+/* FOR 820px */
+/* ******************** */
+
+@media (max-width: 51.5em) {
+	.card-list .card-item .card-link {
+		max-width: 100%;
+	}
+
+	.card-link {
+		padding: 2rem;
+		margin: 2rem;
+	}
+
+	.meme-text {
+		font-size: 1.6rem;
+		line-height: 2.4rem;
+	}
+
+	.text-dots {
+		margin-right: 0;
+		align-items: center;
+	}
+}
+
+/* ******************** */
+/* FOR 568px */
+/* ******************** */
+
+@media (max-width: 35.5em) {
+	.meme-text {
+		align-self: start;
+		order: 2;
+	}
+
+	.text-dots {
+		flex-direction: column;
+	}
+
+	.slider-dots {
+		margin-top: 3rem;
+	}
+}
