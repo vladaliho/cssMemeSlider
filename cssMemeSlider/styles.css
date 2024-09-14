@@ -100,6 +100,7 @@ body {
 	display: flex;
 	justify-content: center;
 	margin-top: 1rem;
+	position: relative;
 }
 
 .dot {
@@ -111,9 +112,25 @@ body {
 	display: inline-block;
 	transition: background-color 0.3s;
 	cursor: pointer;
+	position: relative;
+	z-index: 2;
 }
 
 .dot.active {
 	background-color: transparent;
 	border: 0.05rem solid #74c0fc;
+}
+
+.overlay {
+	margin: 0 0.5rem;
+	border-radius: 50%;
+	display: inline-block;
+	position: absolute;
+	top: -1.2rem;
+	bottom: -1.2rem;
+	left: -0.6rem;
+	right: -0.6rem;
+	background-color: transparent;
+	cursor: pointer;
+	z-index: 1;
 }

@@ -42,16 +42,32 @@ function updateDots() {
 	dotsContainer.innerHTML = '';
 
 	memes.forEach((_, index) => {
+		const dotWrapper = document.createElement('div');
+		dotWrapper.style.position = 'relative';
 		const dot = document.createElement('span');
 		dot.classList.add('dot');
+
+		const overlay = document.createElement('span');
+		overlay.classList.add('overlay');
+
+		dotWrapper.appendChild(dot);
+		dotWrapper.appendChild(overlay);
+
 		if (index === currentSlide) {
 			dot.classList.add('active');
 		}
+
 		dot.addEventListener('click', () => {
 			currentSlide = index;
 			renderMemes();
 		});
-		dotsContainer.appendChild(dot);
+
+		overlay.addEventListener('click', () => {
+			currentSlide = index;
+			renderMemes();
+		});
+
+		dotsContainer.appendChild(dotWrapper);
 	});
 }
 
@@ -65,7 +81,7 @@ function renderMemes() {
     <img src="${meme.img}" class="card-image" alt="Meme ${meme.name}" />
     <div class="text-dots">
       <p class="meme-text">${meme.description}</p>
-      <div class="slider-dots"></div> <!-- Empty container for dots -->
+      <div class="slider-dots"></div> 
     </div>
   `;
 
