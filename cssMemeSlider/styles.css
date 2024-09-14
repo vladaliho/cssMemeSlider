@@ -20,17 +20,16 @@ body {
 }
 
 .container {
-	max-width: 120rem;
 	margin: 0 auto;
 }
 
-.card-list .card-item {
+.card-item {
 	list-style: none;
 }
 
-.card-list .card-item .card-link {
+.card-item {
 	margin: 3rem;
-	max-width: 110rem;
+	max-width: 100%;
 	display: block;
 	padding: 3rem;
 	background-color: #212529;
@@ -40,27 +39,25 @@ body {
 	transition: 0.4s ease;
 }
 
-.card-list .card-item .card-link:hover {
+.card-item:hover {
 	border-color: #868e96;
 }
 
-.card-list .card-link .card-image {
-	width: 100%;
+.card-image {
+	margin: 0 auto;
+	max-width: 80rem;
+	height: 40rem;
 	aspect-ratio: 16 / 9;
 	object-fit: cover;
 	border-radius: 0.8rem;
 }
 
-.card-image {
-	object-fit: contain;
-}
-
-.card-list .card-link {
-	color: #f1f3f5;
+.card-item .card-list {
 	padding: 1rem 1.8rem;
 }
 
 .meme-text {
+	color: #f1f3f5;
 	font-size: 2rem;
 	line-height: 3rem;
 	margin: 1.6rem 0 1.8rem;
