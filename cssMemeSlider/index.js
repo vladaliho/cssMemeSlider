@@ -44,14 +44,13 @@ function updateDots() {
 	memes.forEach((_, index) => {
 		const dotWrapper = document.createElement('div');
 		dotWrapper.style.position = 'relative';
+		const overlay = document.createElement('span');
+		overlay.classList.add('overlay');
 		const dot = document.createElement('span');
 		dot.classList.add('dot');
 
-		const overlay = document.createElement('span');
-		overlay.classList.add('overlay');
-
-		dotWrapper.appendChild(dot);
 		dotWrapper.appendChild(overlay);
+		dotWrapper.appendChild(dot);
 
 		if (index === currentSlide) {
 			dot.classList.add('active');
@@ -77,13 +76,41 @@ function renderMemes() {
 	const meme = memes[currentSlide];
 	const memeElement = document.createElement('li');
 	memeElement.classList.add('card-item');
-	memeElement.innerHTML = `<img src="${meme.img}" class="card-image" alt="Meme ${meme.name}" />
-    <div class="text-dots">
-      <p class="meme-text">${meme.description}</p>
-      <div class="slider-dots"></div> 
-    </div>`;
 
+	const memeImage = document.createElement('img');
+	memeImage.classList.add('card-image');
+	memeImage.src = meme.img;
+	memeImage.alt = `Meme ${meme.name}`;
+
+	const textDots = document.createElement('div');
+	textDots.classList.add('text-dots');
+
+	textDots.innerHTML = `
+    <p class="meme-text">${meme.description}</p>
+    <div class="slider-dots"></div>
+  `;
+
+	const text = textDots.querySelector('.meme-text');
+
+	memeImage.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+	memeImage.style.opacity = '0';
+	memeImage.style.transform = `translateX(${currentSlide * 20}px)`;
+
+	text.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+	text.style.opacity = '0';
+	text.style.transform = `translateX(${currentSlide * 20}px)`;
+
+	memeElement.appendChild(memeImage);
+	memeElement.appendChild(textDots);
 	slider.appendChild(memeElement);
+
+	setTimeout(() => {
+		memeImage.style.opacity = '1';
+		memeImage.style.transform = 'translateX(0)';
+		text.style.opacity = '1';
+		text.style.transform = 'translateX(0)';
+	}, 10);
+
 	updateDots();
 }
 
