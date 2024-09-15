@@ -28,7 +28,7 @@ const memes = [
 	{
 		id: 5,
 		name: 'Michael Rocks',
-		img: 'images/michael-rocks.jpg',
+		img: 'images/Michael-rocks.jpg',
 		description: `Didn’t get much sleep,
        but I did get a few hours of anxiety in`,
 	},
