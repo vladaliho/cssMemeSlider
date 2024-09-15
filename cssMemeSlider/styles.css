@@ -24,10 +24,6 @@ body {
 }
 
 .card-item {
-	list-style: none;
-}
-
-.card-item {
 	margin: 3rem;
 	max-width: 100%;
 	display: block;
@@ -37,6 +33,7 @@ body {
 	text-decoration: none;
 	border-radius: 1.2rem;
 	transition: 0.4s ease;
+	list-style: none;
 }
 
 .card-item:hover {
@@ -45,11 +42,31 @@ body {
 
 .card-image {
 	margin: 0 auto;
-	max-width: 80rem;
-	height: 40rem;
+	max-width: 100%;
 	aspect-ratio: 16 / 9;
 	object-fit: cover;
 	border-radius: 0.8rem;
+	transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	/* opacity: 0; */
+	position: static;
+}
+
+.card-image.active {
+	opacity: 1;
+	z-index: 1;
+	transform: translateX(0);
+}
+
+/* .card-item.leaving {
+	opacity: 0;
+} */
+
+.card-image.prev {
+	transform: translateX(-100%);
+}
+
+.card-image.next {
+	transform: translateX(100%);
 }
 
 .card-item .card-list {
@@ -61,40 +78,17 @@ body {
 	font-size: 2rem;
 	line-height: 3rem;
 	margin: 1.6rem 0 1.8rem;
+	white-space: pre-line;
 }
 
 .text-dots {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	gap: 1rem;
 }
 
 /* Slider dots */
-
-.slider {
-	position: relative;
-	width: 100%;
-	max-width: 600px;
-	margin: auto;
-}
-
-.slides {
-	display: flex;
-	overflow: hidden;
-	position: relative;
-}
-
-.slide {
-	min-width: 100%;
-	transition: transform 0.5s ease-in-out;
-	opacity: 0;
-	display: none;
-}
-
-.slide.active {
-	display: block;
-	opacity: 1;
-}
 
 .slider-dots {
 	display: flex;

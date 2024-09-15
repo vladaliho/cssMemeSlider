@@ -1,4 +1,4 @@
-'use strict';
+js: 'use strict';
 
 const memes = [
 	{
@@ -29,8 +29,8 @@ const memes = [
 		id: 5,
 		name: 'Michael Rocks',
 		img: 'images/michael-rocks.jpg',
-		description:
-			'Didn’t get much sleep, but I did get a few hours of anxiety in',
+		description: `Didn’t get much sleep,
+       but I did get a few hours of anxiety in`,
 	},
 ];
 
@@ -77,13 +77,11 @@ function renderMemes() {
 	const meme = memes[currentSlide];
 	const memeElement = document.createElement('li');
 	memeElement.classList.add('card-item');
-	memeElement.innerHTML = `
-    <img src="${meme.img}" class="card-image" alt="Meme ${meme.name}" />
+	memeElement.innerHTML = `<img src="${meme.img}" class="card-image" alt="Meme ${meme.name}" />
     <div class="text-dots">
       <p class="meme-text">${meme.description}</p>
       <div class="slider-dots"></div> 
-    </div>
-  `;
+    </div>`;
 
 	slider.appendChild(memeElement);
 	updateDots();

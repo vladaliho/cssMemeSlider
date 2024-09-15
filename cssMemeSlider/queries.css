@@ -12,11 +12,6 @@
 		margin: 2rem;
 	}
 
-	.card-image {
-		max-width: 50rem;
-		height: 25rem;
-	}
-
 	.meme-text {
 		font-size: 1.6rem;
 		line-height: 2.4rem;
@@ -29,15 +24,10 @@
 }
 
 /* ******************** */
-/* FOR 568px */
+/* FOR 568px - 320px */
 /* ******************** */
 
 @media (max-width: 35.5em) {
-	.card-image {
-		max-width: 30rem;
-		height: 17rem;
-	}
-
 	.meme-text {
 		align-self: start;
 		order: 2;
