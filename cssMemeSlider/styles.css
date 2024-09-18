@@ -4,117 +4,173 @@
 	padding: 0;
 }
 
-html {
-	font-size: 62.5%;
-	overflow-x: hidden;
-}
-
 body {
+	height: 100vh;
 	display: flex;
-	align-items: center;
 	justify-content: center;
-	min-height: 100vh;
-	background-color: #343a40;
-	margin: 0 auto;
-	overflow-x: hidden;
+	align-items: center;
+	background-color: #212529;
 }
 
-.container {
-	margin: 0 auto;
-}
-
-.card-item {
-	display: flex;
-	margin: 3rem;
-	max-width: 100%;
-	display: block;
-	padding: 3rem;
+.slider {
+	width: 60%;
+	position: relative;
+	overflow: hidden;
+	padding: 1rem;
 	background-color: #212529;
 	border: 0.1rem solid #000;
-	text-decoration: none;
 	border-radius: 1.2rem;
-	transition: 0.4s ease;
-	list-style: none;
 }
 
-.card-item:hover {
-	border-color: #868e96;
+.images {
+	display: flex;
+	transition: transform 0.3s ease-in;
+	width: 100%;
 }
 
-.card-image {
-	margin: 0 auto;
+.item {
+	flex: 1 0 100%;
+	display: block;
 	max-width: 100%;
-	aspect-ratio: 16 / 9;
+	height: auto;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
 	object-fit: cover;
-	border-radius: 0.8rem;
-	transition: opacity 0.5s ease;
-	opacity: 0;
+	padding-bottom: 2rem;
+	border-radius: 0.6rem;
 }
 
-.card-item .card-list {
-	padding: 1rem 1.8rem;
-}
-
-.meme-text {
-	color: #f1f3f5;
-	font-size: 2rem;
-	line-height: 3rem;
-	margin: 1.6rem 0 1.8rem;
-	white-space: pre-line;
+input {
+	display: none;
 }
 
 .text-dots {
 	display: flex;
-	align-items: center;
 	justify-content: space-between;
-	gap: 1rem;
 }
 
-/* Slider dots */
+.texts {
+	overflow: hidden;
+	width: 100%;
+}
 
-.slider-dots {
+.text {
+	font-size: 1.2rem;
+	font-family: sans-serif;
+	font-weight: 200;
+	color: white;
+	flex: 1;
+	text-align: left;
+	opacity: 0;
+	transition: all 0.3s ease-in;
+	display: none;
+}
+
+#img1:checked ~ .text-dots .texts .text:nth-of-type(1),
+#img2:checked ~ .text-dots .texts .text:nth-of-type(2),
+#img3:checked ~ .text-dots .texts .text:nth-of-type(3),
+#img4:checked ~ .text-dots .texts .text:nth-of-type(4),
+#img5:checked ~ .text-dots .texts .text:nth-of-type(5) {
+	display: block;
+	opacity: 1;
+	animation-duration: 0.7s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-out;
+}
+
+@keyframes open {
+	0% {
+		display: block;
+		opacity: 0;
+		visibility: hidden;
+	}
+	100% {
+		display: block;
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+.dots {
 	display: flex;
-	justify-content: center;
-	margin-top: 1rem;
+}
+
+.dots label {
 	position: relative;
-}
-
-.dot {
-	height: 1.2rem;
-	width: 1.2rem;
-	margin: 0 0.5rem;
-	background-color: #74c0fc;
+	height: 0.9rem;
+	width: 0.9rem;
 	border-radius: 50%;
-	display: inline-block;
-	transition: background-color 0.3s;
+	border: solid #4dabf7 0.1rem;
+	background-color: #4dabf7;
 	cursor: pointer;
-	position: relative;
-	z-index: 2;
+	box-sizing: content-box;
+	margin: 0.4rem;
 }
 
-.dot:hover {
-	background-color: #007bff;
+.dots label:hover {
+	background-color: #f1f3f5;
+	border: solid #f1f3f5 0.1rem;
 }
 
-.dot.active {
+.dots label:active {
+	background-color: #4dabf7;
+}
+
+#img1:checked ~ .text-dots .dots label:nth-of-type(1),
+#img2:checked ~ .text-dots .dots label:nth-of-type(2),
+#img3:checked ~ .text-dots .dots label:nth-of-type(3),
+#img4:checked ~ .text-dots .dots label:nth-of-type(4),
+#img5:checked ~ .text-dots .dots label:nth-of-type(5) {
+	border-color: #4dabf7;
 	background-color: transparent;
-	border: 0.05rem solid #74c0fc;
+	transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
-.overlay {
-	margin: 0 0.5rem;
-	border-radius: 50%;
-	display: inline-block;
-	position: absolute;
-	top: -1.2rem;
-	bottom: -1.2rem;
-	left: -0.6rem;
-	right: -0.6rem;
-	background-color: transparent;
-	cursor: pointer;
-	z-index: 1;
+#img1:checked ~ .images {
+	transform: translateX(0%);
+	transition: transform 0.5s ease-in-out;
 }
 
-.overlay:hover ~ .dot {
-	background-color: #007bff;
+#img2:checked ~ .images {
+	transform: translateX(-100%);
+	transition: transform 0.5s ease-in-out;
+}
+
+#img3:checked ~ .images {
+	transform: translateX(-200%);
+	transition: transform 0.5s ease-in-out;
+}
+
+#img4:checked ~ .images {
+	transform: translateX(-300%);
+	transition: transform 0.5s ease-in-out;
+}
+
+#img5:checked ~ .images {
+	transform: translateX(-400%);
+	transition: transform 0.5s ease-in-out;
+}
+@media screen and (min-width: 48em) and (max-width: 68.75em) {
+	.text-dots {
+		display: flex;
+		justify-content: space-between;
+	}
+}
+@media screen and (min-width: 20em) and (max-width: 47em) {
+	.text-dots {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+
+	.dots {
+		justify-content: center;
+	}
+
+	.text {
+		font-size: 0.9rem;
+		margin-bottom: 0.5vh;
+		padding: 0 0.5rem;
+		text-align: left;
+	}
 }
