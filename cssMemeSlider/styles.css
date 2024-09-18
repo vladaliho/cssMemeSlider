@@ -81,12 +81,10 @@ input {
 
 @keyframes open {
 	0% {
-		display: block;
 		opacity: 0;
 		visibility: hidden;
 	}
 	100% {
-		display: block;
 		opacity: 1;
 		visibility: visible;
 	}
@@ -98,30 +96,35 @@ input {
 
 .dots label {
 	position: relative;
-	height: 0.9rem;
-	width: 0.9rem;
-	border-radius: 50%;
-	border: solid #4dabf7 0.1rem;
-	background-color: #4dabf7;
+	padding: 0.2rem;
 	cursor: pointer;
-	box-sizing: content-box;
 	margin: 0.4rem;
 }
 
-.dots label:hover {
-	background-color: #f1f3f5;
-	border: solid #f1f3f5 0.1rem;
+.dots label span {
+	display: block;
+	height: 1.2rem;
+	width: 1.2rem;
+	border-radius: 50%;
+	background-color: #4dabf7;
+	border: solid #4dabf7 0.1rem;
+	pointer-events: none;
 }
 
-.dots label:active {
+.dots label:hover span {
+	background-color: #f1f3f5;
+	border-color: #f1f3f5;
+}
+
+.dots label:active span {
 	background-color: #4dabf7;
 }
 
-#img1:checked ~ .text-dots .dots label:nth-of-type(1),
-#img2:checked ~ .text-dots .dots label:nth-of-type(2),
-#img3:checked ~ .text-dots .dots label:nth-of-type(3),
-#img4:checked ~ .text-dots .dots label:nth-of-type(4),
-#img5:checked ~ .text-dots .dots label:nth-of-type(5) {
+#img1:checked ~ .text-dots .dots label:nth-of-type(1) span,
+#img2:checked ~ .text-dots .dots label:nth-of-type(2) span,
+#img3:checked ~ .text-dots .dots label:nth-of-type(3) span,
+#img4:checked ~ .text-dots .dots label:nth-of-type(4) span,
+#img5:checked ~ .text-dots .dots label:nth-of-type(5) span {
 	border-color: #4dabf7;
 	background-color: transparent;
 	transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
@@ -151,12 +154,14 @@ input {
 	transform: translateX(-400%);
 	transition: transform 0.5s ease-in-out;
 }
+
 @media screen and (min-width: 48em) and (max-width: 68.75em) {
 	.text-dots {
 		display: flex;
 		justify-content: space-between;
 	}
 }
+
 @media screen and (min-width: 20em) and (max-width: 47em) {
 	.text-dots {
 		display: flex;
