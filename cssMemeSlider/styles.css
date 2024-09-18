@@ -4,98 +4,178 @@
 	padding: 0;
 }
 
-html {
-	font-size: 62.5%;
-	overflow-x: hidden;
-}
-
 body {
+	height: 100vh;
 	display: flex;
-	align-items: center;
 	justify-content: center;
-	min-height: 100vh;
-	background-color: #343a40;
-}
-
-.card-list .card-item {
-	list-style: none;
-}
-
-.card-list .card-item .card-link {
-	width: 110rem;
-	display: block;
-	padding: 3rem;
+	align-items: center;
 	background-color: #212529;
-	border: 0.1rem solid #000;
-	text-decoration: none;
-	border-radius: 1.2rem;
-	transition: 0.4s ease;
 }
-
-.card-list .card-item .card-link:hover {
-	border-color: #868e96;
-}
-
-.card-list .card-link .card-image {
-	width: 100%;
-	aspect-ratio: 16 / 9;
-	object-fit: cover;
-	border-radius: 0.8rem;
-}
-
-.card-list .card-link .meme-text {
-	color: #f1f3f5;
-	padding: 1rem 1.8rem;
-	font-size: 2rem;
-	margin: 1.6rem 0 1.8rem;
-	line-height: 3rem;
-}
-
-/* Slider dots */
 
 .slider {
+	width: 60%;
 	position: relative;
-	width: 100%;
-	max-width: 600px;
-	margin: auto;
-}
-
-.slides {
-	display: flex;
 	overflow: hidden;
-	position: relative;
+	padding: 1rem;
+	background-color: #212529;
+	border: 0.1rem solid #000;
+	border-radius: 1.2rem;
 }
 
-.slide {
-	min-width: 100%;
-	transition: transform 0.5s ease-in-out;
-	opacity: 0;
+.images {
+	display: flex;
+	transition: transform 0.3s ease-in;
+	width: 100%;
+}
+
+.item {
+	flex: 1 0 100%;
+	display: block;
+	max-width: 100%;
+	height: auto;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	object-fit: cover;
+	padding-bottom: 2rem;
+	border-radius: 0.6rem;
+}
+
+input {
 	display: none;
 }
 
-.slide.active {
+.text-dots {
+	display: flex;
+	justify-content: space-between;
+}
+
+.texts {
+	overflow: hidden;
+	width: 100%;
+}
+
+.text {
+	font-size: 1.2rem;
+	font-family: sans-serif;
+	font-weight: 200;
+	color: white;
+	flex: 1;
+	text-align: left;
+	opacity: 0;
+	transition: all 0.3s ease-in;
+	display: none;
+}
+
+#img1:checked ~ .text-dots .texts .text:nth-of-type(1),
+#img2:checked ~ .text-dots .texts .text:nth-of-type(2),
+#img3:checked ~ .text-dots .texts .text:nth-of-type(3),
+#img4:checked ~ .text-dots .texts .text:nth-of-type(4),
+#img5:checked ~ .text-dots .texts .text:nth-of-type(5) {
 	display: block;
 	opacity: 1;
+	animation-duration: 0.7s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-out;
 }
 
-.slider-dots {
+@keyframes open {
+	0% {
+		opacity: 0;
+		visibility: hidden;
+	}
+	100% {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+.dots {
 	display: flex;
-	justify-content: center;
-	margin-top: 1rem;
 }
 
-.dot {
+.dots label {
+	position: relative;
+	padding: 0.2rem;
+	cursor: pointer;
+	margin: 0.4rem;
+}
+
+.dots label span {
+	display: block;
 	height: 1.2rem;
 	width: 1.2rem;
-	margin: 0 0.5rem;
-	background-color: #74c0fc;
 	border-radius: 50%;
-	display: inline-block;
-	transition: background-color 0.3s;
-	cursor: pointer;
+	background-color: #4dabf7;
+	border: solid #4dabf7 0.1rem;
+	pointer-events: none;
 }
 
-.dot.active {
+.dots label:hover span {
+	background-color: #f1f3f5;
+	border-color: #f1f3f5;
+}
+
+.dots label:active span {
+	background-color: #4dabf7;
+}
+
+#img1:checked ~ .text-dots .dots label:nth-of-type(1) span,
+#img2:checked ~ .text-dots .dots label:nth-of-type(2) span,
+#img3:checked ~ .text-dots .dots label:nth-of-type(3) span,
+#img4:checked ~ .text-dots .dots label:nth-of-type(4) span,
+#img5:checked ~ .text-dots .dots label:nth-of-type(5) span {
+	border-color: #4dabf7;
 	background-color: transparent;
-	border: 0.05rem solid #74c0fc;
+	transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+#img1:checked ~ .images {
+	transform: translateX(0%);
+	transition: transform 0.5s ease-in-out;
+}
+
+#img2:checked ~ .images {
+	transform: translateX(-100%);
+	transition: transform 0.5s ease-in-out;
+}
+
+#img3:checked ~ .images {
+	transform: translateX(-200%);
+	transition: transform 0.5s ease-in-out;
+}
+
+#img4:checked ~ .images {
+	transform: translateX(-300%);
+	transition: transform 0.5s ease-in-out;
+}
+
+#img5:checked ~ .images {
+	transform: translateX(-400%);
+	transition: transform 0.5s ease-in-out;
+}
+
+@media screen and (min-width: 48em) and (max-width: 68.75em) {
+	.text-dots {
+		display: flex;
+		justify-content: space-between;
+	}
+}
+
+@media screen and (min-width: 20em) and (max-width: 47em) {
+	.text-dots {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+
+	.dots {
+		justify-content: center;
+	}
+
+	.text {
+		font-size: 0.9rem;
+		margin-bottom: 0.5vh;
+		padding: 0 0.5rem;
+		text-align: left;
+	}
 }
